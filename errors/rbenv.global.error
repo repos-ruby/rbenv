@@ -1,0 +1,78 @@
+Problem:  'rbenv global [custom]' not working.  Continues using system ruby, even
+    though rbenv thinks its using a custom one.
+
+Example:    
+
+:~/bin/tmp> ls -al
+total 8
+drwxrwxr-x  2 kurtosis kurtosis 4096 Jun 12 21:57 ./
+drwxrwxr-x 35 kurtosis kurtosis 4096 Jun 10 21:14 ../
+
+:~/bin/tmp> which ruby
+/usr/bin/ruby
+
+:~/bin/tmp> ruby -v
+ruby 1.8.7 (2011-06-30 patchlevel 352) [x86_64-linux]
+
+:~/bin/tmp> rbenv versions
+  1.9.2-p290
+  1.9.3-p0
+  jruby-1.6.5.1
+
+:~/bin/tmp> rbenv global 1.9.3-p0
+
+:~/bin/tmp> ruby -v
+ruby 1.8.7 (2011-06-30 patchlevel 352) [x86_64-linux]
+
+:~/bin/tmp> rbenv versions
+  1.9.2-p290
+* 1.9.3-p0 (set by /home/kurtosis/bin/ruby/rbenv/version)
+  jruby-1.6.5.1
+
+:~/bin/tmp> which rbenv
+/home/kurtosis/bin/ruby/rbenv/bin/rbenv
+
+:~/bin/tmp> ls -al
+total 8
+drwxrwxr-x  2 kurtosis kurtosis 4096 Jun 12 21:57 ./
+drwxrwxr-x 35 kurtosis kurtosis 4096 Jun 10 21:14 ../
+
+:~/bin/tmp> ruby -v
+ruby 1.8.7 (2011-06-30 patchlevel 352) [x86_64-linux]
+
+:~/bin/tmp> rbenv global system
+
+:~/bin/tmp> ls -al
+total 8
+drwxrwxr-x  2 kurtosis kurtosis 4096 Jun 12 21:57 ./
+drwxrwxr-x 35 kurtosis kurtosis 4096 Jun 10 21:14 ../
+
+:~/bin/tmp> rbenv versions
+  1.9.2-p290
+  1.9.3-p0
+  jruby-1.6.5.1
+
+:~/bin/tmp> rbenv local 1.9.3-p0
+
+:~/bin/tmp> ls -al
+total 12
+drwxrwxr-x  2 kurtosis kurtosis 4096 Jun 12 21:59 ./
+drwxrwxr-x 35 kurtosis kurtosis 4096 Jun 10 21:14 ../
+-rw-rw-r--  1 kurtosis kurtosis    9 Jun 12 21:59 .rbenv-version
+
+:~/bin/tmp> cat .rbenv-version 
+1.9.3-p0
+
+:~/bin/tmp> ruby -v
+ruby 1.8.7 (2011-06-30 patchlevel 352) [x86_64-linux]
+
+:~/bin/tmp> which ruby
+/usr/bin/ruby
+
+:~/bin/tmp> rbenv versions
+  1.9.2-p290
+* 1.9.3-p0 (set by /home/kurtosis/bin/temp/.rbenv-version)
+  jruby-1.6.5.1
+
+:~/bin/tmp> ???
+

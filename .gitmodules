@@ -1,0 +1,9 @@
+[submodule "plugins/ruby-build"]
+	path = plugins/ruby-build
+	url = git://github.com/sstephenson/ruby-build.git
+[submodule "plugins/rbenv-update"]
+	path = plugins/rbenv-update
+	url = git://github.com/rkh/rbenv-update.git
+[submodule "plugins/rbenv-gemset"]
+	path = plugins/rbenv-gemset
+	url = git://github.com/jamis/rbenv-gemset.git
